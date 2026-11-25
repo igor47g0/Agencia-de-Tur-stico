@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher Destino e Orçamento | Gramado VIP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark-theme text-white">
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top shadow-lg">
+    <div class="container">
+        <a class="navbar-brand brand-title d-flex align-items-center gap-2" href="index.html">
+            <i class="fa-solid fa-mountain-sun text-gold fs-4"></i>
+            <span class="fw-bold text-white">GRAMADO<span class="text-gold">.VIP</span></span>
+        </a>
+        <div class="ms-auto">
+            <a href="index.html" class="btn btn-outline-gold rounded-pill px-4">
+                <i class="fa-solid fa-arrow-left me-2"></i>Voltar ao Início
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="py-6 mt-4">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="text-gold fw-bold uppercase-track">Planejamento de Viagem</span>
+            <h1 class="font-serif display-5 fw-bold text-white mt-1">Escolha Seu Destino e Veja o Orçamento</h1>
+            <p class="text-white max-w-700 mx-auto">Selecione para onde deseja viajar, informe dias e pessoas para calcular quanto custaria.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Coluna Esquerda: Seleção de Destino e Parâmetros -->
+            <div class="col-lg-7">
+                <div class="bg-dark-card p-4 p-md-5 rounded-4 border border-dark-subtle">
+                    <h4 class="font-serif text-gold mb-4">1. Para onde você quer viajar?</h4>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label text-white small">Destino</label>
+                            <select id="selectDestino" class="form-select input-dark">
+                                <option value="gramado-romantico" data-diaria="420" data-passeio="180" data-desc="Hospedagem na serra, fondue e passeios em Gramado.">Gramado (Serra & Gastronomia)</option>
+                                <option value="canela-familia" data-diaria="360" data-passeio="210" data-desc="Parques temáticos, natureza e roteiro familiar em Canela.">Canela (Parques & Família)</option>
+                                <option value="canions-vinicolas" data-diaria="390" data-passeio="230" data-desc="Cânions, trilhas leves e degustação em vinícolas.">Cânions & Vale dos Vinhedos</option>
+                                <option value="porto-alegre-serra" data-diaria="340" data-passeio="160" data-desc="Roteiro combinado com transfer e pontos turísticos.">Circuito Serra + Capital</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label text-white small">Padrão da Viagem</label>
+                            <select id="selectPadrao" class="form-select input-dark">
+                                <option value="1">Essencial (1.0x)</option>
+                                <option value="1.35" selected>Conforto VIP (1.35x)</option>
+                                <option value="1.8">Luxo Exclusivo (1.8x)</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="inputDias" class="form-label text-white small">Quantidade de Dias</label>
+                            <input type="number" id="inputDias" class="form-control input-dark" min="1" max="30" value="3">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="inputPessoas" class="form-label text-white small">Quantidade de Pessoas</label>
+                            <input type="number" id="inputPessoas" class="form-control input-dark" min="1" max="20" value="2">
+                        </div>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="chkTransfer" checked>
+                        <label class="form-check-label text-white small" for="chkTransfer">
+                            Incluir traslado / transporte local (+R$ 140 por pessoa)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chkSeguro" checked>
+                        <label class="form-check-label text-white small" for="chkSeguro">
+                            Incluir seguro viagem e assistência (+R$ 65 por pessoa)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Direita: Resumo do Orçamento -->
+            <div class="col-lg-5">
+                <div class="bg-dark-card p-4 p-md-5 rounded-4 border-gold shadow-lg h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <span class="badge bg-gold text-dark fw-bold mb-2">Orçamento Estimado</span>
+                        <h3 class="font-serif text-white mb-2" id="resumoTitulo">Gramado (Serra & Gastronomia)</h3>
+                        <p class="text-white small mb-4" id="resumoDescricao">Hospedagem na serra, fondue e passeios em Gramado.</p>
+
+                        <div class="border-top border-dark-subtle pt-3 mb-3 small text-white">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Hospedagem estimada:</span>
+                                <strong id="valHospedagem">R$ 0,00</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Atrações e roteiro:</span>
+                                <strong id="valAtracoes">R$ 0,00</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Extras (transfer / seguro):</span>
+                                <strong id="valExtras">R$ 0,00</strong>
+                            </div>
+                        </div>
+
+                        <div class="border-top border-gold pt-3">
+                            <span class="d-block text-white small">Valor total estimado:</span>
+                            <span class="display-6 fw-bold text-gold" id="valTotal">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-gold btn-lg rounded-pill w-100 mt-4 shadow-glow" id="btnSolicitarPacote">
+                        Reservar Este Orçamento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const selectDestino = document.getElementById('selectDestino');
+    const selectPadrao = document.getElementById('selectPadrao');
+    const inputDias = document.getElementById('inputDias');
+    const inputPessoas = document.getElementById('inputPessoas');
+    const chkTransfer = document.getElementById('chkTransfer');
+    const chkSeguro = document.getElementById('chkSeguro');
+
+    // Pré-seleciona destino se vier pela URL (?destino=...)
+    const params = new URLSearchParams(window.location.search);
+    const destinoParam = params.get('destino');
+    if (destinoParam) {
+        const existe = Array.from(selectDestino.options).some(opt => opt.value === destinoParam);
+        if (existe) selectDestino.value = destinoParam;
+    }
+
+    function formatarBRL(valor) {
+        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function calcularOrcamento() {
+        const opt = selectDestino.options[selectDestino.selectedIndex];
+        const diariaBase = parseFloat(opt.getAttribute('data-diaria'));
+        const passeioBase = parseFloat(opt.getAttribute('data-passeio'));
+        const desc = opt.getAttribute('data-desc');
+
+        const padrao = parseFloat(selectPadrao.value);
+        const dias = Math.max(1, parseInt(inputDias.value || 1, 10));
+        const pessoas = Math.max(1, parseInt(inputPessoas.value || 1, 10));
+
+        const hospedagem = diariaBase * dias * pessoas * padrao;
+        const atracoes = passeioBase * dias * pessoas * padrao;
+
+        let extrasPorPessoa = 0;
+        if (chkTransfer.checked) extrasPorPessoa += 140;
+        if (chkSeguro.checked) extrasPorPessoa += 65;
+        const extras = extrasPorPessoa * pessoas;
+
+        const total = hospedagem + atracoes + extras;
+
+        document.getElementById('resumoTitulo').textContent = opt.text;
+        document.getElementById('resumoDescricao').textContent = desc;
+        document.getElementById('valHospedagem').textContent = formatarBRL(hospedagem);
+        document.getElementById('valAtracoes').textContent = formatarBRL(atracoes);
+        document.getElementById('valExtras').textContent = formatarBRL(extras);
+        document.getElementById('valTotal').textContent = formatarBRL(total);
+    }
+
+    [selectDestino, selectPadrao, inputDias, inputPessoas, chkTransfer, chkSeguro].forEach(el => {
+        el.addEventListener('input', calcularOrcamento);
+        el.addEventListener('change', calcularOrcamento);
+    });
+
+    document.getElementById('btnSolicitarPacote').addEventListener('click', () => {
+        const destino = selectDestino.options[selectDestino.selectedIndex].text;
+        const total = document.getElementById('valTotal').textContent;
+        alert(`Orçamento de ${total} para "${destino}" registrado! Nossa equipe enviará o roteiro completo.`);
+    });
+
+    calcularOrcamento();
+</script>
+</body>
+</html>
