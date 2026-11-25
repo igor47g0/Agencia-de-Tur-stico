@@ -1,6 +1,6 @@
-# 🌍 Aonde a Vida pode me levar
+# 🌍 A onde a Vida pode me levar
 
-> *"Explorando novos horizontes, linhas de código e destinos inesquecíveis."*
+> Explorando novos horizontes
 
 <div align="center">
   <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="Torre Eiffel em Paris" width="100%" style="border-radius: 10px;">
